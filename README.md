@@ -45,10 +45,10 @@
   </script>
 
   <template>
-  <div>
-      <p>Count: {{ count }}</p>
-      <button type="button" @click="increment">Add</button>
-  </div>
+    <div>
+        <p>Count: {{ count }}</p>
+        <button type="button" @click="increment">Add</button>
+    </div>
   </template>
 
   ```
