@@ -1,5 +1,6 @@
 ---
-import ReactCounter from "./components/ReactCounter.jsx";
+import ReactCounter from "../components/ReactCounter";
+import VueCounter from "../components/VueCounter.vue";
 ---
 
 <html lang="en">
@@ -13,7 +14,9 @@ import ReactCounter from "./components/ReactCounter.jsx";
 	</head>
 	<body>
 		<h1>Multiple Framework Sample</h1>
-		<h2>React</h2>
+		<h2>React.js</h2>
 		<ReactCounter client:load />
+		<h2>Vue.js</h2>
+		<VueCounter client:load />
 	</body>
 </html>
