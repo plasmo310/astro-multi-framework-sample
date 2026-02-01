@@ -40,7 +40,7 @@
   const count = ref<number>(0);
 
   const increment = (): void => {
-  count.value += 1;
+    count.value += 1;
   };
   </script>
 
