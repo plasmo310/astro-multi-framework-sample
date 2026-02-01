@@ -11,21 +11,26 @@
 - `src/components/ReactCounter.tsx`
 
   ```
-  import { useState } from "react";
+    import { useState } from "react";
 
-  function ReactCounter() {
-  const [count, setCount] = useState<number>(0);
+    function ReactCounter() {
+    const [count, setCount] = useState<number>(0);
+    const doubled = count * 2;
 
-  return (
-      <div>
-      <p>Count: {count}</p>
-      <button type="button" onClick={() => setCount((prev) => prev + 1)}>
-          Add
-      </button>
-      </div>
-  );
-  }
-  export default ReactCounter;
+    return (
+        <div>
+        <p>Count: {count}</p>
+        <p>Doubled: {doubled}</p>
+        <button type="button" onClick={() => setCount((prev) => prev + 1)}>
+            Add
+        </button>
+        <button type="button" onClick={() => setCount(0)}>
+            Reset
+        </button>
+        </div>
+    );
+    }
+    export default ReactCounter;
 
   ```
 
@@ -34,22 +39,29 @@
 - `src/components/VueCounter.vue`
 
   ```
-  <script lang="ts" setup>
-  import { ref } from "vue";
+    <script lang="ts" setup>
+    import { computed, ref } from "vue";
 
-  const count = ref<number>(0);
+    const count = ref<number>(0);
+    const doubled = computed(() => count.value * 2);
 
-  const increment = (): void => {
-    count.value += 1;
-  };
-  </script>
+    const increment = (): void => {
+        count.value += 1;
+    };
 
-  <template>
-    <div>
-        <p>Count: {{ count }}</p>
-        <button type="button" @click="increment">Add</button>
-    </div>
-  </template>
+    const reset = (): void => {
+        count.value = 0;
+    };
+    </script>
+
+    <template>
+        <div>
+            <p>Count: {{ count }}</p>
+            <p>Doubled: {{ doubled }}</p>
+            <button type="button" @click="increment">Add</button>
+            <button type="button" @click="reset">Reset</button>
+        </div>
+    </template>
 
   ```
 
@@ -58,17 +70,24 @@
 - `src/components/SvelteCounter.svelte`
 
   ```
-  <script lang="ts">
-      let count: number = 0;
+    <script lang="ts">
+        let count = 0;
+        $: doubled = count * 2;
 
-      const increment = (): void => {
-          count += 1;
-      };
-  </script>
+        function increment(): void {
+            count += 1;
+        }
 
-  <div>
-      <p>Count: {count}</p>
-      <button type="button" on:click={increment}>Add</button>
-  </div>
+        function reset(): void {
+            count = 0;
+        }
+    </script>
+
+    <div>
+        <p>Count: {count}</p>
+        <p>Doubled: {doubled}</p>
+        <button type="button" on:click={increment}>Add</button>
+        <button type="button" on:click={reset}>Reset</button>
+    </div>
 
   ```
