@@ -1,6 +1,7 @@
 ---
 import ReactCounter from "../components/ReactCounter";
 import VueCounter from "../components/VueCounter.vue";
+import SvelteCounter from "../components/SvelteCounter.svelte";
 ---
 
 <html lang="en">
@@ -14,9 +15,11 @@ import VueCounter from "../components/VueCounter.vue";
 	</head>
 	<body>
 		<h1>Multiple Framework Sample</h1>
-		<h2>React.js</h2>
+		<h2>React</h2>
 		<ReactCounter client:load />
-		<h2>Vue.js</h2>
+		<h2>Vue</h2>
 		<VueCounter client:load />
+		<h2>Svelte</h2>
+		<SvelteCounter client:load />
 	</body>
 </html>
