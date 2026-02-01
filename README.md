@@ -1,43 +1,74 @@
-# Astro Starter Kit: Minimal
+# Astro Multi Framework Sample
 
-```sh
-npm create astro@latest -- --template minimal
-```
+- Astro.jsで複数UIフレームワークを使用するサンプルになります。
+- 以下のフレームワークでシンプルなカウント処理を実装しています。
+  - React
+  - Vue
+  - Svelte
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## React
 
-## 🚀 Project Structure
+- `src/components/ReactCounter.tsx`
 
-Inside of your Astro project, you'll see the following folders and files:
+  ```
+  import { useState } from "react";
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+  function ReactCounter() {
+  const [count, setCount] = useState<number>(0);
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+  return (
+      <div>
+      <p>Count: {count}</p>
+      <button type="button" onClick={() => setCount((prev) => prev + 1)}>
+          Add
+      </button>
+      </div>
+  );
+  }
+  export default ReactCounter;
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+  ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Vue
 
-## 🧞 Commands
+- `src/components/VueCounter.vue`
 
-All commands are run from the root of the project, from a terminal:
+  ```
+  <script lang="ts" setup>
+  import { ref } from "vue";
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+  const count = ref<number>(0);
 
-## 👀 Want to learn more?
+  const increment = (): void => {
+  count.value += 1;
+  };
+  </script>
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+  <template>
+  <div>
+      <p>Count: {{ count }}</p>
+      <button type="button" @click="increment">Add</button>
+  </div>
+  </template>
+
+  ```
+
+## Svelte
+
+- `src/components/SvelteCounter.svelte`
+
+  ```
+  <script lang="ts">
+      let count: number = 0;
+
+      const increment = (): void => {
+          count += 1;
+      };
+  </script>
+
+  <div>
+      <p>Count: {count}</p>
+      <button type="button" on:click={increment}>Add</button>
+  </div>
+
+  ```
