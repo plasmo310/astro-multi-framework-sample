@@ -6,6 +6,38 @@
   - Vue
   - Svelte
 
+## Main
+
+- `src/pages/index.astro`
+
+  ```
+  ---
+  import ReactCounter from "../components/ReactCounter";
+  import VueCounter from "../components/VueCounter.vue";
+  import SvelteCounter from "../components/SvelteCounter.svelte";
+  ---
+  
+  <html lang="en">
+  	<head>
+  		<meta charset="utf-8" />
+  		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  		<link rel="icon" href="/favicon.ico" />
+  		<meta name="viewport" content="width=device-width" />
+  		<meta name="generator" content={Astro.generator} />
+  		<title>Multiple UI Framework Sample</title>
+  	</head>
+  	<body>
+  		<h1>Multiple Framework Sample</h1>
+  		<h2>React</h2>
+  		<ReactCounter client:load />
+  		<h2>Vue</h2>
+  		<VueCounter client:load />
+  		<h2>Svelte</h2>
+  		<SvelteCounter client:load />
+  	</body>
+  </html>
+  ```
+
 ## React
 
 - `src/components/ReactCounter.tsx`
